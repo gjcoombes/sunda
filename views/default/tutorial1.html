@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    {{response.files.insert(0, URL("static", "js/d3.v3.js"))}}
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        <script type="text/javascript" src="{{=URL('static', 'js/d3.v3.js')}}"></script>
+        <style type="text/css">
+            body {
+                background-color: grey;
+            }
+            svg {
+                background-color: white;
+            }
+            svg .pumpkin {
+                fill: yellow;
+                stroke: orange;
+                stroke-width: 10;
+            }
+        </style>
+
+    </head>
+    <body>
+        <script type="text/javascript">
+var gav = {};
+gav.w = 600;
+gav.h = 300;
+var dataset = [ 5, 10, 15, 20, 25 ];        
+d3.select("body").selectAll("p")
+    .data(dataset)
+    .enter()
+    .append("p")
+    .text("New paragraph!");
+
+var svg = d3.select("body").append("svg");
+svg.attr("width", gav.w);
+svg.attr("height", gav.h);
+
+var circle = svg.append("circle")
+                .attr("cx", 100)
+                .attr("cy", 100)
+                .attr("r", "80")
+                .attr("class", "pumpkin")
+        </script>
+    </body>
+</html> 

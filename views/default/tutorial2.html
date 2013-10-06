@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        <script type="text/javascript" src="{{=URL('static', 'js/d3.v3.js')}}"></script>
+        <script src="http://d3js.org/topojson.v1.min.js"></script>        
+        <style type="text/css">
+        </style>
+
+    </head>
+    <body>
+    <div>"Hello Monkey"</div>
+        <script type="text/javascript">
+var width = 1200;
+var height = 800;
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+d3.json("{{ =URL('static', 'json/se_asia_topo_5e3.json') }}", function(error, se_asia) {
+    var polys = topojson.feature(se_asia, se_asia.objects.se_asia_feature_collection);
+    var projection = d3.geo.albers()
+        .rotate([-120, -6, 3])
+        .center([0, -35])
+        .parallels([-36, -18])
+        .scale(2000)
+        .translate([width / 2, height / 2]);
+    // var projection = d3.geo.albers()
+    //     .scale(-1000)
+    //     .center([110, -30])
+    //     .parallels;
+
+    var path = d3.geo.path()
+        .projection(projection);
+    console.log(projection.parallels())
+    svg.append("path")
+    .datum(polys)
+    .attr("d", path);
+});
+        </script>
+    </body>
+</html> 

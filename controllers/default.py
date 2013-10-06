@@ -19,7 +19,7 @@ def index():
     return auth.wiki()
     """
     response.flash = T("Welcome to web2py!")
-    return dict(message=T('Hello World'))
+    return dict(message=T('Welcome to the plotting app Sunda'))
 
 
 def user():
@@ -38,6 +38,50 @@ def user():
     to decorate functions that need access control
     """
     return dict(form=auth())
+
+def tutorial1():
+    """Follwoing along with alignedleft
+    """
+    return dict(message=T('Hello World'))
+
+def tutorial2():
+    response.flash = T("Welcome to web2py!")
+    return dict(message=T('Hello World'))
+
+def square():
+    poly = { 
+        "type": "Polygon",
+        "coordinates": [
+        [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]
+        ]
+    }
+    return dict(data=poly)
+
+def squares():
+    geom_coll = { 
+        "type": "GeometryCollection",
+        "geometries": [
+            { 
+                "type": "Polygon",
+                "coordinates": [
+                    [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]
+                ],
+            },
+            { 
+                "type": "Polygon",
+                "coordinates": [
+                    [ [100.0, 0.0], [99.0, 0.0], [99.0, -1.0], [100.0, -1.0], [100.0, 0.0] ]
+                ],
+            }, 
+        ]
+    }
+    return dict(data=geom_coll)
+
+def square_path():
+    return dict()
+
+def squares_path():
+    return dict()
 
 @cache.action()
 def download():
